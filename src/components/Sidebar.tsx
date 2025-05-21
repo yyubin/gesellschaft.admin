@@ -18,7 +18,7 @@ const Sidebar = () => {
             key={item.to}
             to={item.to}
             className={`p-2 rounded text-left ${
-              pathname === item.to ? 'bg-white shadow' : ''
+              pathname === item.to ? 'bg-blue shadow' : ''
             } hover:bg-white`}
           >
             {item.label}

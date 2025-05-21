@@ -19,7 +19,7 @@ const Topbar = () => {
   }, []);
 
   return (
-    <div className="bg-teal-400 p-4 text-white text-lg font-semibold flex justify-between items-center">
+    <div className="bg-blue-600 p-4 text-white text-lg font-semibold flex justify-between items-center">
       <span>Gesellschaft Admin Panel</span>
       {user && <span>{user.username} 관리자님 안녕하세요</span>}
     </div>

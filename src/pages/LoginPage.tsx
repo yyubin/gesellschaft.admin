@@ -1,10 +1,9 @@
-// src/pages/LoginPage.tsx
 import { useState } from 'react';
-import { apiClient } from '../api/axios';
 import { useNavigate } from 'react-router-dom';
+import { apiClient } from '../api/axios';
 
 const LoginPage = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
@@ -12,7 +11,7 @@ const LoginPage = () => {
     try {
       await apiClient.post(
         '/login',
-        { username, password },
+        { username: email, password },
         { withCredentials: true }
       );
       navigate('/');
@@ -22,26 +21,55 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
-      <div className="bg-white shadow-md p-8 rounded-lg w-96">
-        <h2 className="text-2xl font-bold mb-6 text-center">관리자 로그인</h2>
+    <div className="flex items-center justify-center min-h-screen bg-gray-50">
+      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-sm">
+        {/* 로고 */}
+        <div className="flex justify-center mb-4">
+          <div className="text-2xl font-bold text-blue-600">for Gesellschaft Admin</div>
+        </div>
+
+        <h2 className="text-xl font-semibold text-center mb-6">Sign in</h2>
+
         <input
-          className="w-full border px-4 py-2 mb-4 rounded"
-          placeholder="ID"
-          onChange={(e) => setUsername(e.target.value)}
+          className="w-full border px-4 py-2 mb-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="Email"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
-          className="w-full border px-4 py-2 mb-6 rounded"
+          className="w-full border px-4 py-2 mb-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="Password"
           type="password"
-          placeholder="PW"
+          value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+
+        <div className="text-right text-sm mb-4">
+          <a href="#" className="text-blue-600 hover:underline">
+            Forgot password?
+          </a>
+        </div>
+
         <button
           onClick={login}
-          className="w-full bg-gray-900 text-white py-2 rounded hover:bg-gray-800"
+          className="w-full bg-blue-600 py-2 rounded hover:bg-blue-700 transition"
         >
-          로그인
+          Sign in
         </button>
+
+        <div className="flex items-center my-4">
+          <div className="flex-grow border-t border-gray-300"></div>
+          <span className="mx-2 text-gray-500 text-sm">or</span>
+          <div className="flex-grow border-t border-gray-300"></div>
+        </div>
+
+        <div className="text-center text-sm mt-6">
+          Not a member?{' '}
+          <a href="#" className="text-blue-600 hover:underline">
+            Sign up
+          </a>
+        </div>
       </div>
     </div>
   );
