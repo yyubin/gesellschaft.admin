@@ -2,6 +2,9 @@
 import { useEffect, useState } from 'react';
 import { apiClient } from '../api/axios';
 
+import { useSidebar } from '../context/SidebarContext';
+import { FaBars } from 'react-icons/fa';
+
 interface UserInfo {
   id: number;
   username: string;
@@ -10,6 +13,7 @@ interface UserInfo {
 
 const Topbar = () => {
   const [user, setUser] = useState<UserInfo | null>(null);
+  const { toggleSidebar } = useSidebar();
 
   useEffect(() => {
     apiClient
@@ -19,9 +23,11 @@ const Topbar = () => {
   }, []);
 
   return (
-    <div className="bg-blue-600 p-4 text-white text-lg font-semibold flex justify-between items-center">
-      <span>Gesellschaft Admin Panel</span>
-      {user && <span>{user.username} 관리자님 안녕하세요</span>}
+    <div className="bg-white shadow px-4 py-2 flex items-center justify-between">
+      <button onClick={toggleSidebar}>
+        <FaBars className="text-2xl text-gray-800" />
+      </button>
+      <div className="font-bold">관리자 페이지</div>
     </div>
   );
 };

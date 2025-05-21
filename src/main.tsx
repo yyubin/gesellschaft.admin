@@ -1,11 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { RouterProvider } from 'react-router-dom';
-import { router } from './router';
-import './index.css';
+import { BrowserRouter } from 'react-router-dom';
+import App from './App';
+import { SidebarProvider } from './context/SidebarContext';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <SidebarProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </SidebarProvider>
   </React.StrictMode>
 );
