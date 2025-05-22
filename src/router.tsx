@@ -10,6 +10,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import PersonaDetailPage from './pages/PersonaDetailPage';
 import PersonaImageManagePage from './pages/PersonaImageManagePage';
 import SkillImageManagePage from './pages/SkillImageManagePage';
+import BaseDataPage from './pages/BaseDataPage';
 
 export const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ export const router = createBrowserRouter([
           {
             path: 'personas/:id/skills/images',
             element: <SkillImageManagePage />
+          },
+          {
+            path: 'base-data/:type',
+            element: <BaseDataPage />
           }
         ],
       },
