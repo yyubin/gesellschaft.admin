@@ -9,6 +9,7 @@ import MirrorDungeonPage from './pages/MirrorDungeonPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import PersonaDetailPage from './pages/PersonaDetailPage';
 import PersonaImageManagePage from './pages/PersonaImageManagePage';
+import SkillImageManagePage from './pages/SkillImageManagePage';
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ export const router = createBrowserRouter([
           {
             path: 'personas/:id/images',
             element: <PersonaImageManagePage />
+          },
+          {
+            path: 'personas/:id/skills/images',
+            element: <SkillImageManagePage />
           }
         ],
       },

@@ -48,6 +48,12 @@ const PersonaDetailPage = () => {
 
       <div className="bg-white shadow p-4 rounded">
         <h2 className="text-lg font-semibold mb-2">스킬</h2>
+        <button
+            className="text-sm px-3 py-1 bg-indigo-600 text-white rounded"
+            onClick={() => navigate(`/personas/${data.id}/skills/images`)}
+          >
+            스킬 이미지 관리
+        </button>
         <ul className="space-y-2">
           {data.activeSkills.map((s) => (
             <li key={s.id} className="border-b pb-2">
