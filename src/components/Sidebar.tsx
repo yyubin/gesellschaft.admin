@@ -15,7 +15,7 @@ const Sidebar = () => {
 
   return (
     <aside
-      className={`bg-blue-700 text-white h-screen transition-all duration-300 ${
+      className={`fixed top-0 left-0 bg-blue-700 text-white h-screen transition-all duration-300 z-50 ${
         isOpen ? 'w-64' : 'w-16'
       }`}
     >
@@ -35,6 +35,7 @@ const Sidebar = () => {
         ))}
       </nav>
     </aside>
+
   );
 };
 
