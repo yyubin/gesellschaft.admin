@@ -16,6 +16,56 @@ export interface PersonaSummary {
     releaseDate: string;
 }
 
+export interface PersonaDetail {
+    id: number;
+    name: string;
+    rarity: number;
+    health: number;
+    minSpeed: number;
+    maxSpeed: number;
+    guardLevel: number;
+    season: string;
+    releaseDate: string;
+    mental: number;
+  
+    character: {
+      id: number;
+      name: string;
+      nameKo: string;
+    };
+  
+    resistance: {
+      attack: string;
+      penetration: string;
+      batting: string;
+    };
+  
+    traits: {
+      id: number;
+      name: string;
+    }[];
+  
+    activeSkills: {
+      id: number;
+      syncLevel: number;
+      skillIndex: string;
+      skillName: string;
+      attackType: string;
+      sinProperty: {
+        id: number;
+        name: string;
+      };
+      quantity: number;
+      damageSpec: {
+        basePower: number;
+        coinPower: number;
+        coinCount: number;
+        weight: number;
+      };
+      attackLevel: number;
+    }[];
+}
+
 export interface PersonaResponse {
     content: PersonaSummary[];
     totalPages: number;
@@ -24,5 +74,10 @@ export interface PersonaResponse {
 
 export const getPersonas = async (page: number, size: number): Promise<PersonaResponse> => {
     const res = await apiClient.get('/personas', { params: { page, size } });
+    return res.data;
+};
+
+export const getPersonaDetail = async (id: number): Promise<PersonaDetail> => {
+    const res = await apiClient.get(`/personas/${id}`);
     return res.data;
 };

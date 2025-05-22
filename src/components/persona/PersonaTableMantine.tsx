@@ -6,7 +6,8 @@ import {
   } from '@tanstack/react-table';
   import { useEffect, useState } from 'react';
   import { getPersonas, type PersonaSummary } from '../../api/PersonaApi';
-  
+  import { useNavigate } from 'react-router-dom';
+
   const columns: ColumnDef<PersonaSummary>[] = [
     { accessorKey: 'id', header: 'ID' },
     { accessorKey: 'name', header: '이름' },
@@ -26,7 +27,7 @@ import {
     const [data, setData] = useState<PersonaSummary[]>([]);
     const [page, setPage] = useState(0); // 0-based page index
     const [totalPages, setTotalPages] = useState(1);
-  
+    const navigate = useNavigate();
     const size = 10;
   
     useEffect(() => {
@@ -60,7 +61,11 @@ import {
           </thead>
           <tbody>
             {table.getRowModel().rows.map((row) => (
-              <tr key={row.id} className="border-t hover:bg-gray-50">
+              <tr 
+                key={row.id} 
+                className="border-t hover:bg-gray-50 cursor-pointer"
+                onClick={() => navigate(`/personas/${row.original.id}`)}
+        >
                 {row.getVisibleCells().map((cell) => (
                   <td key={cell.id} className="p-2">
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}

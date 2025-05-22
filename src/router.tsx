@@ -7,6 +7,7 @@ import EgosPage from './pages/EgosPage';
 import DequePage from './pages/DequePage';
 import MirrorDungeonPage from './pages/MirrorDungeonPage';
 import ProtectedRoute from './components/ProtectedRoute';
+import PersonaDetailPage from './pages/PersonaDetailPage';
 
 export const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ export const router = createBrowserRouter([
           { path: 'egos', element: <EgosPage /> },
           { path: 'deque', element: <DequePage /> },
           { path: 'mirror-dungeon', element: <MirrorDungeonPage /> },
+          {
+            path: 'personas/:id',
+            element: <PersonaDetailPage />
+          }
         ],
       },
     ],
