@@ -8,6 +8,7 @@ import DequePage from './pages/DequePage';
 import MirrorDungeonPage from './pages/MirrorDungeonPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import PersonaDetailPage from './pages/PersonaDetailPage';
+import PersonaImageManagePage from './pages/PersonaImageManagePage';
 
 export const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ export const router = createBrowserRouter([
           {
             path: 'personas/:id',
             element: <PersonaDetailPage />
+          },
+          {
+            path: 'personas/:id/images',
+            element: <PersonaImageManagePage />
           }
         ],
       },

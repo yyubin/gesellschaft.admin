@@ -2,10 +2,12 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getPersonaDetail, type PersonaDetail } from '../api/PersonaApi';
+import { useNavigate } from 'react-router-dom';
 
 const PersonaDetailPage = () => {
   const { id } = useParams<{ id: string }>();
   const [data, setData] = useState<PersonaDetail | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (id) {
@@ -18,7 +20,12 @@ const PersonaDetailPage = () => {
   return (
     <div className="p-6 space-y-4">
       <h1 className="text-2xl font-bold">{data.character.nameKo} - {data.name} 상세 정보</h1>
-
+      <button
+        className="mt-4 px-4 py-2 bg-blue-600 text-white rounded"
+        onClick={() => navigate(`/personas/${data.id}/images`)}
+        >
+        이미지 관리
+      </button>
       <div className="bg-white shadow p-4 rounded space-y-2">
         <p><strong>캐릭터:</strong> {data.character.name}</p>
         <p><strong>성:</strong> {data.rarity}★</p>
