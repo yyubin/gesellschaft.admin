@@ -57,6 +57,14 @@ const Sidebar = () => {
               >
                 특성
               </Link>
+              <Link
+                to="/base-data/sin-property"
+                className={`px-2 py-1 text-sm rounded hover:bg-blue-600 transition ${
+                  pathname === '/base-data/sin-property' ? 'bg-blue-600 font-semibold' : ''
+                }`}
+              >
+                죄악 속성
+              </Link>
             </div>
           )}
         </div>
