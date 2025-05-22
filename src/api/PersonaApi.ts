@@ -44,6 +44,12 @@ export interface PersonaDetail {
       id: number;
       name: string;
     }[];
+
+    disturbed: {
+      disturbed1: number | null;
+      disturbed2: number | null;
+      disturbed3: number | null;
+    };
   
     activeSkills: {
       id: number;
@@ -63,8 +69,74 @@ export interface PersonaDetail {
         weight: number;
       };
       attackLevel: number;
+
+      
     }[];
 }
+
+export interface PersonaUpdatePayload {
+  id: number
+  characterId: number;
+  name: string;
+  rarity: number;
+  health: number;
+  mental: number;
+  minSpeed: number;
+  maxSpeed: number;
+  guardLevel: number;
+  seasonId: number;
+  releaseDate: string;
+
+  resistance: {
+    attack: string;
+    penetration: string;
+    batting: string;
+  };
+
+  disturbed: {
+    disturbed1: number | null;
+    disturbed2: number | null;
+    disturbed3: number | null;
+  };
+
+  traitIds: number[];
+}
+
+export interface PersonaCreateRequest {
+  characterId: number;
+  name: string;
+  rarity: number;
+  health: number;
+  mental: number;
+  minSpeed: number;
+  maxSpeed: number;
+  guardLevel: number;
+  seasonId: number;
+  releaseDate: string; // ISO 문자열
+
+  resistance: {
+    attack: string;
+    penetration: string;
+    batting: string;
+  };
+
+  disturbed: {
+    disturbed1: number | null;
+    disturbed2: number | null;
+    disturbed3: number | null;
+  };
+
+  traitIds: number[];
+}
+
+export const updatePersona = async (id: number, payload: PersonaUpdatePayload) => {
+  await apiClient.put(`/personas/${id}`, payload);
+};
+
+export const createPersona = async (request: PersonaCreateRequest) => {
+  await apiClient.post('/personas', request);
+};
+
 
 export interface PersonaResponse {
     content: PersonaSummary[];

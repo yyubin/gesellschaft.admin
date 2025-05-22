@@ -11,6 +11,8 @@ import PersonaDetailPage from './pages/PersonaDetailPage';
 import PersonaImageManagePage from './pages/PersonaImageManagePage';
 import SkillImageManagePage from './pages/SkillImageManagePage';
 import BaseDataPage from './pages/BaseDataPage';
+import PersonaEditPage from './pages/PersonaEditPage';
+import PersonaCreatePage from './pages/PersonaCreatePage';
 
 export const router = createBrowserRouter([
   {
@@ -41,6 +43,14 @@ export const router = createBrowserRouter([
           {
             path: 'base-data/:type',
             element: <BaseDataPage />
+          },
+          {
+            path: 'personas/:id/edit',
+            element: <PersonaEditPage />
+          },
+          {
+            path: 'personas/create',
+            element: <PersonaCreatePage />
           }
         ],
       },

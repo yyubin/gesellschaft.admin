@@ -26,6 +26,12 @@ const PersonaDetailPage = () => {
         >
         이미지 관리
       </button>
+      <button
+        className="mt-2 px-4 py-2 bg-green-600 text-white rounded"
+        onClick={() => navigate(`/personas/${data.id}/edit`)}
+        >
+          수정하기
+      </button>
       <div className="bg-white shadow p-4 rounded space-y-2">
         <p><strong>캐릭터:</strong> {data.character.name}</p>
         <p><strong>성:</strong> {data.rarity}★</p>
