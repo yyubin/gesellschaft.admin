@@ -1,15 +1,25 @@
 import { apiClient } from "./axios";
 
-export interface PersonaImageResponse {
+export interface CharacterDto {
     id: number;
-    persona: {
-      id: number;
-      name: string;
-    };
-    imageA: string;
-    imageAd: string;
-    imageSd: string;
-}
+    name: string;
+    nameKo: string;
+  }
+  
+  export interface PersonaDto {
+    id: number;
+    name: string;
+  }
+  
+  export interface PersonaImageResponse {
+    id: number;
+    persona: PersonaDto;
+    character: CharacterDto;
+    imageA: string | null;
+    imageAd: string | null;
+    imageSd: string | null;
+  }
+  
 
 export const getPersonaImage = async (id: number): Promise<PersonaImageResponse> => {
     const res = await apiClient.get(`/personas/images/${id}`);
@@ -28,3 +38,21 @@ export const getPersonaImage = async (id: number): Promise<PersonaImageResponse>
     });
 };
 
+export const getPresignedUrl = async (
+    file: File,
+    personaId: number,
+    imageType: 'A' | 'AC' | 'SD',
+    characterName: string
+  ): Promise<string> => {
+    const res = await apiClient.post('/personas/images/presign', null, {
+      params: {
+        fileName: file.name,
+        type: imageType,
+        personaId,
+        characterName,
+        contentType: file.type,
+      },
+    });
+    return res.data;
+  };
+  
