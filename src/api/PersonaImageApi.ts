@@ -16,7 +16,7 @@ export interface CharacterDto {
     persona: PersonaDto;
     character: CharacterDto;
     imageA: string | null;
-    imageAd: string | null;
+    imageAc: string | null;
     imageSd: string | null;
   }
   

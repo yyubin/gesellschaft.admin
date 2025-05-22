@@ -18,7 +18,7 @@ const PersonaImageManagePage = () => {
         setData(res);
         setUrls({
           A: res.imageA || '',
-          AC: res.imageAd || '',
+          AC: res.imageAc || '',
           SD: res.imageSd || '',
         });
       });
