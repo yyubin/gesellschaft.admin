@@ -36,6 +36,14 @@ const PersonaDetailPage = () => {
         <p><strong>시즌:</strong> {data.season}</p>
         <p><strong>출시일:</strong> {data.releaseDate?.slice(0, 10)}</p>
       </div>
+      <div className="bg-white shadow p-4 rounded">
+        <h2 className="text-lg font-semibold mb-2">흐트러짐</h2>
+        <ul className="list-disc ml-5 text-sm">
+          <li>흐트러짐1: {data.disturbed?.disturbed1 ?? '-'}</li>
+          <li>흐트러짐2: {data.disturbed?.disturbed2 ?? '-'}</li>
+          <li>흐트러짐3: {data.disturbed?.disturbed3 ?? '-'}</li>
+        </ul>
+      </div>
 
       <div className="bg-white shadow p-4 rounded">
         <h2 className="text-lg font-semibold mb-2">저항</h2>
