@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import KeywordManage from '../components/base/KeywordManage';
 import TraitManage from '../components/base/TraitManage';
 import SinPropertyManage from '../components/base/SinPropertyManage';
+import SeasonManage from '../components/base/SeasonManage';
 
 const BaseDataPage = () => {
   const { type } = useParams<{ type: string }>();
@@ -13,6 +14,7 @@ const BaseDataPage = () => {
       {type === 'keyword' && <KeywordManage />}
       {type === 'trait' && <TraitManage />}
       {type === 'sin-property' && <SinPropertyManage />}
+      {type === 'season' && <SeasonManage />}
       {!['keyword', 'trait', 'sin-property'].includes(type ?? '') && <p>유효하지 않은 경로입니다.</p>}
     </div>
   );
