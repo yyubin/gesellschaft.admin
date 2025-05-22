@@ -13,6 +13,7 @@ import SkillImageManagePage from './pages/SkillImageManagePage';
 import BaseDataPage from './pages/BaseDataPage';
 import PersonaEditPage from './pages/PersonaEditPage';
 import PersonaCreatePage from './pages/PersonaCreatePage';
+import PersonaSkillEditPage from './pages/SkillEditPage';
 
 export const router = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ export const router = createBrowserRouter([
           {
             path: 'personas/create',
             element: <PersonaCreatePage />
+          },
+          {
+            path: '/personas/:id/skills/edit',
+            element: <PersonaSkillEditPage />
           }
         ],
       },
