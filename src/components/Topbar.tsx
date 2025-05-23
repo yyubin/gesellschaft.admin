@@ -1,6 +1,7 @@
 // src/components/Topbar.tsx
 import { useEffect, useState } from 'react';
 import { apiClient } from '../api/axios';
+import { logout } from '../api/UserApi';
 
 import { useSidebar } from '../context/SidebarContext';
 import { FaBars } from 'react-icons/fa';
@@ -9,6 +10,10 @@ interface UserInfo {
   id: number;
   username: string;
   role: 'ADMIN' | 'USER';
+}
+
+const handleLogout = async () => {
+  logout();
 }
 
 const Topbar = () => {

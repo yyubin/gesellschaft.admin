@@ -14,7 +14,10 @@ const DashboardPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setUser(null);
+    apiClient
+    .get('/admin/me', { withCredentials: true })
+    .then((res) => setUser(res.data))
+    .catch(() => setUser(null));
   }, []);
 
   const logout = async () => {
@@ -29,7 +32,11 @@ const DashboardPage = () => {
       <h1>관리자 대시보드</h1>
       <p>환영합니다, {user.username} 님!</p>
       <p>역할: {user.role}</p>
-      <button onClick={logout}>로그아웃</button>
+      <button 
+        className="px-4 py-2 bg-blue-600 text-white rounded"
+        onClick={logout}>
+          로그아웃
+      </button>
     </div>
   );
 };
