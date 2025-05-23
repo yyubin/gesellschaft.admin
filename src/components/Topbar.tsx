@@ -20,6 +20,7 @@ const Topbar = () => {
       .get('/admin/me', { withCredentials: true })
       .then((res) => setUser(res.data))
       .catch(() => setUser(null));
+      console.log(user);
   }, []);
 
   return (
