@@ -129,6 +129,12 @@ export interface PersonaCreateRequest {
   traitIds: number[];
 }
 
+export interface PageResult<T> {
+  content: T[];
+  totalPages: number;
+  totalElements: number;
+}
+
 export const updatePersona = async (id: number, payload: PersonaUpdatePayload) => {
   await apiClient.put(`/personas/${id}`, payload);
 };
@@ -144,9 +150,28 @@ export interface PersonaResponse {
     totalElements: number;
 }
 
-export const getPersonas = async (page: number, size: number): Promise<PersonaResponse> => {
-    const res = await apiClient.get('/personas', { params: { page, size } });
-    return res.data;
+// export const getPersonas = async (page: number, size: number): Promise<PersonaResponse> => {
+//     const res = await apiClient.get('/personas', { params: { page, size } });
+//     return res.data;
+// };
+
+export const getPersonas = async (
+  page: number,
+  size: number,
+  sortBy?: string,
+  name?: string,
+  characterId?: string
+): Promise<PageResult<PersonaSummary>> => {
+  const params = new URLSearchParams({
+    page: page.toString(),
+    size: size.toString(),
+  });
+  if (sortBy) params.append('sortBy', sortBy);
+  if (name) params.append('name', name);
+  if (characterId) params.append('characterId', characterId);
+
+  const res = await apiClient.get('/personas', { params });
+  return res.data;
 };
 
 export const getPersonaDetail = async (id: number): Promise<PersonaDetail> => {
